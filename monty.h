@@ -1,6 +1,12 @@
 #ifndef MONTY_H
 #define MONTY_H
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_COMMAND_LENGTH 100
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -30,5 +36,19 @@ typedef struct instruction_s
     char *opcode;
     void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+
+
+typedef struct func_arg_s {
+    void (*f)(stack_t **stack, unsigned int line_number);
+    int arg;
+} func_arg_t;
+
+
+extern int curr_arg;
+
+void push(stack_t**, unsigned int);
+void pall(stack_t**, unsigned int);
+func_arg_t get_func_args(stack_t**, char* line, int line_number, FILE *file);
+
 
 #endif

@@ -11,7 +11,7 @@ void push(stack_t **head, unsigned int line_number) {
 
     new->prev = NULL;
     new->next = *head;
-    new->n = 5;
+    new->n = curr_arg;
     *head = new;
 }
 

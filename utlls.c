@@ -12,7 +12,10 @@ func_arg_t get_func_args(stack_t** head, char *line, int line_number, FILE *file
 
     func_name = strtok(line, " ");
     arg = strtok(NULL, " ");
-
+    if (arg != NULL)
+        curr_arg = atoi(arg);
+    
+    
     for (int i = 0; i < 2; i++) {
         if (strcmp(code_funcs[i].opcode, func_name) == 0) {
             code_funcs[i].f(head, line_number);

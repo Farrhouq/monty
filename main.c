@@ -47,6 +47,12 @@ int main(int ac, char **av)
             line_number++;
             continue;
         }
+
+        if (strcmp(command, "nop") == 0) {
+            line_number++;
+            continue;
+        }
+
         if (len > 0 && command[len - 1] == '\n') {
             command[len - 1] = '\0';
         }

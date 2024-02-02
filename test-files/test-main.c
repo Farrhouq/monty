@@ -4,7 +4,6 @@
 #include <stdio.h>
 
 int main() {
-    // char *tok = NULL;
     char *comm = "";
     char *tok= NULL, *arg = NULL;
 

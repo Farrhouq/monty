@@ -5,7 +5,6 @@ int main(int ac, char **av)
 {
     FILE *file;
     char *command;
-    func_arg_t cur_func_arg;
     stack_t *head = NULL;
     int line_number;
 

@@ -2,14 +2,12 @@
 
 void push(stack_t **head, unsigned int line_number)
 {
-    (void)line_number;
-    stack_t *new = malloc(sizeof(stack_t));
+    stack_t *new;
     int y = 0;
+    
 
-    // curr_arg = NULL;
-    // if (curr_arg == NULL)
-    //     printf("%s\n", "curr_arg");
-    // printf("%s\n", "curr_arg");
+    (void)line_number;
+    new = malloc(sizeof(stack_t));
 
     if (new == NULL)
     {

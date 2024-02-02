@@ -6,14 +6,20 @@ int get_func_args(stack_t **head, char *line, int line_number, FILE *file)
     int i = 0;
     instruction_t code_funcs[] = {
         {"push", push},
-        {"pall", pall}};
+        {"pall", pall},
+        {"mod", modu},
+        {"div", division},
+        {"sub", sub},
+        {"add", add}
+            
+    };
 
     (void)file;
 
     func_name = strtok(line, " \n\t");
     curr_arg = strtok(NULL, " \n\t");
 
-    for (i = 0; i < 2; i++)
+    for (i = 0; i < 6; i++)
     {
         if (strcmp(code_funcs[i].opcode, func_name) == 0)
         {
@@ -22,4 +28,32 @@ int get_func_args(stack_t **head, char *line, int line_number, FILE *file)
         }
     }
     return 0;
+}
+
+/**
+ * exit_prog - exits the function
+ */
+void exit_prog()
+{
+    fclose(cur_file);
+    free(curr_command);
+    exit(EXIT_FAILURE);
+}
+
+/**
+ * free_stack - frees a stack
+ * @stack: stack head
+ *
+ */
+
+void free_stack(stack_t *stack)
+{
+	stack_t *tmp;
+
+	while (stack)
+	{
+		tmp = stack;
+		stack = stack->next;
+		free(tmp);
+	}
 }

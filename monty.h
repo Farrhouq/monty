@@ -45,10 +45,18 @@ typedef struct func_arg_s {
 
 
 extern char* curr_arg;
+extern FILE* cur_file;
+extern char* curr_command;
 
 void push(stack_t**, unsigned int);
 void pall(stack_t**, unsigned int);
 int get_func_args(stack_t**, char* line, int line_number, FILE *file);
+void modu(stack_t **stack, unsigned int line_number);
+void division(stack_t **stack, unsigned int line_number);
+void sub(stack_t **stack, unsigned int line_number);
+void add(stack_t **stack, unsigned int line_number);
+void free_stack(stack_t *stack);
+void exit_prog();
 
 
 #endif

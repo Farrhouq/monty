@@ -19,8 +19,7 @@ int get_func_args(stack_t **head, char *line, int line_number, FILE *file)
     {
         if (strcmp(code_funcs[i].opcode, func_name) == 0)
         {
-            printf("so we have curr_arg as %s\n", curr_arg);
-            // code_funcs[i].f(head, line_number);
+            code_funcs[i].f(head, line_number);
             return (0);
         }
         

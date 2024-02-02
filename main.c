@@ -26,13 +26,14 @@ int main(int ac, char **av)
     line_number = 1;
     while (fgets(command, MAX_COMMAND_LENGTH, file) != NULL)
     {
-        printf("\tloop main run for program and C: %s\n", command);
+        size_t len = strlen(command);
+        if (len > 0 && command[len - 1] == '\n') {
+            command[len - 1] = '\0';
+        }
         if (command) {
-        // printf("line %d\n", line_number);
         get_func_args(&head, command, line_number, file);
         }
         line_number++;
-
     }
 
     (void)ac;

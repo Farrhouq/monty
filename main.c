@@ -1,5 +1,21 @@
 #include "monty.h"
 
+
+
+int isEmptyLine(const char *line) {
+    int i;
+
+    for (i = 0; line[i] != '\0'; i++) {
+        if (line[i] != ' ' && line[i] != '\n' && line[i] != '\r' && line[i] != '\t') {
+            return 0;
+        }
+    }
+    return 1;
+}
+
+
+
+
 char *curr_arg;
 int main(int ac, char **av)
 {
@@ -26,6 +42,11 @@ int main(int ac, char **av)
     while (fgets(command, MAX_COMMAND_LENGTH, file) != NULL)
     {
         size_t len = strlen(command);
+
+        if (isEmptyLine(command)) {
+            line_number++;
+            continue;
+        }
         if (len > 0 && command[len - 1] == '\n') {
             command[len - 1] = '\0';
         }

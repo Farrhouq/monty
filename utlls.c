@@ -10,8 +10,10 @@ int get_func_args(stack_t **head, char *line, int line_number, FILE *file)
         {"mod", modu},
         {"div", division},
         {"sub", sub},
-        {"add", add}
-            
+        {"add", add},
+        {"pint", pint},
+        {"swap", swap},
+        {"pop", pop},
     };
 
     (void)file;
@@ -19,7 +21,7 @@ int get_func_args(stack_t **head, char *line, int line_number, FILE *file)
     func_name = strtok(line, " \n\t");
     curr_arg = strtok(NULL, " \n\t");
 
-    for (i = 0; i < 6; i++)
+    for (i = 0; i < 9; i++)
     {
         if (strcmp(code_funcs[i].opcode, func_name) == 0)
         {

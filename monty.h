@@ -44,11 +44,11 @@ typedef struct func_arg_s {
 } func_arg_t;
 
 
-extern int curr_arg;
+extern char* curr_arg;
 
 void push(stack_t**, unsigned int);
 void pall(stack_t**, unsigned int);
-func_arg_t get_func_args(stack_t**, char* line, int line_number, FILE *file);
+int get_func_args(stack_t**, char* line, int line_number, FILE *file);
 
 
 #endif

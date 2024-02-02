@@ -1,15 +1,17 @@
-#include "monty.h"
+// #include "monty.h"
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
 
-int testmain() {
+int main() {
     // char *tok = NULL;
-    char *comm = "     push          7";
+    char *comm = "";
+    char *tok= NULL, *arg = NULL;
 
-    char line[MAX_COMMAND_LENGTH];
+    char line[100];
     strcpy(line, comm);
-    // printf("%s\n", tok);
-    get_func_args(line);
+    tok = strtok(line, " ");
+    arg = strtok(NULL, " ");
+    printf("%s, %s\n", tok, arg);
     return (0);
 }

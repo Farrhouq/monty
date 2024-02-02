@@ -82,7 +82,7 @@ int main(int ac, char **av)
 		get_func_args(&head, command, line_number, file);
 		line_number++;
 	}
-    free_stack(head);
+	free_stack(head);
 	exit_prog();
 	return (0);
 }

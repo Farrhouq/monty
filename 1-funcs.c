@@ -1,63 +1,75 @@
 #include "monty.h"
 
+/**
+ * push - pushes to the stack
+ * @head: stack type
+ * @line_number: line number of monty file
+ *
+ */
 void push(stack_t **head, unsigned int line_number)
 {
-    stack_t *new;
-    int y = 0;
+	stack_t *new;
+	int y = 0;
 
-    (void)line_number;
-    new = malloc(sizeof(stack_t));
+	(void)line_number;
+	new = malloc(sizeof(stack_t));
 
-    if (new == NULL)
-    {
-        fprintf(stderr, "Error: malloc exit_prog\n");
-        exit(EXIT_FAILURE);
-    }
+	if (new == NULL)
+	{
+		fprintf(stderr, "Error: malloc exit_prog\n");
+		exit(EXIT_FAILURE);
+	}
 
-    if (curr_arg != NULL)
-    {
-        while (curr_arg[y] != '\0')
-        {
-            if (curr_arg[y] == '-')
-            {
-                y++;
-                continue;
-            }
-            if (curr_arg[y] < 48 || curr_arg[y] > 57)
-            {
-                fprintf(stderr, "L%d: usage: push integer\n", line_number);
-                exit(EXIT_FAILURE);
-            }
-            else
-            {
-                y++;
-                continue;
-            }
-        }
-    }
-    else
-    {
-        fprintf(stderr, "L%d: usage: push integer\n", line_number);
-        exit(EXIT_FAILURE);
-    }
+	if (curr_arg != NULL)
+	{
+		while (curr_arg[y] != '\0')
+		{
+			if (curr_arg[y] == '-')
+			{
+				y++;
+				continue;
+			}
+			if (curr_arg[y] < 48 || curr_arg[y] > 57)
+			{
+				fprintf(stderr, "L%d: usage: push integer\n", line_number);
+				exit(EXIT_FAILURE);
+			}
+			else
+			{
+				y++;
+				continue;
+			}
+		}
+	}
+	else
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
 
-    new->n = atoi(curr_arg);
-    new->prev = NULL;
-    new->next = *head;
-    *head = new;
+	new->n = atoi(curr_arg);
+	new->prev = NULL;
+	new->next = *head;
+	*head = new;
 }
 
+/**
+ * pall - prints the stack
+ * @head: stack type
+ * @line_number: line number of monty file
+ *
+ */
 void pall(stack_t **head, unsigned int line_number)
 {
-    stack_t *temp;
-    (void)line_number;
-    temp = *head;
+	stack_t *temp;
+	(void)line_number;
+	temp = *head;
 
-    while (temp != NULL)
-    {
-        printf("%d\n", temp->n);
-        temp = temp->next;
-    }
+	while (temp != NULL)
+	{
+		printf("%d\n", temp->n);
+		temp = temp->next;
+	}
 }
 
 /**
@@ -68,13 +80,13 @@ void pall(stack_t **head, unsigned int line_number)
  */
 void pint(stack_t **stack, unsigned int line_number)
 {
-    if (*stack == NULL)
-    {
-        fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
-        free_stack(*stack);
-        exit_prog();
-    }
-    printf("%d\n", (*stack)->n);
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		free_stack(*stack);
+		exit_prog();
+	}
+	printf("%d\n", (*stack)->n);
 }
 
 /**
@@ -86,19 +98,19 @@ void pint(stack_t **stack, unsigned int line_number)
 
 void pop(stack_t **stack, unsigned int line_number)
 {
-    stack_t *ptr;
+	stack_t *ptr;
 
-    if (*stack == NULL)
-    {
-        fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
-        free_stack(*stack);
-        exit_prog();
-    }
-    ptr = *stack;
-    *stack = ptr->next;
-    if (*stack != NULL)
-        ptr->next->prev = NULL;
-    free(ptr);
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		free_stack(*stack);
+		exit_prog();
+	}
+	ptr = *stack;
+	*stack = ptr->next;
+	if (*stack != NULL)
+		ptr->next->prev = NULL;
+	free(ptr);
 }
 
 /**
@@ -110,15 +122,15 @@ void pop(stack_t **stack, unsigned int line_number)
 
 void swap(stack_t **stack, unsigned int line_number)
 {
-    int n;
+	int n;
 
-    if (*stack == NULL || (*stack)->next == NULL)
-    {
-        fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
-        free_stack(*stack);
-        exit_prog();
-    }
-    n = (*stack)->n;
-    (*stack)->n = (*stack)->next->n;
-    (*stack)->next->n = n;
+	if (*stack == NULL || (*stack)->next == NULL)
+	{
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+		free_stack(*stack);
+		exit_prog();
+	}
+	n = (*stack)->n;
+	(*stack)->n = (*stack)->next->n;
+	(*stack)->next->n = n;
 }

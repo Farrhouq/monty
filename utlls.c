@@ -10,8 +10,8 @@ int get_func_args(stack_t **head, char *line, int line_number, FILE *file)
 
     (void)file;
 
-    func_name = strtok(line, " ");
-    curr_arg = strtok(NULL, " ");
+    func_name = strtok(line, " \n\t");
+    curr_arg = strtok(NULL, " \n\t");
 
     for (i = 0; i < 2; i++)
     {
